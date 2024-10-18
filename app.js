@@ -146,10 +146,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i + width].innerHTML);
                 squares[i].innerHTML = combinedTotal;
                 squares[i + width].innerHTML = 0;
-                score += combinedTotal; // Увеличиваем счет
+                score += combinedTotal; 
             }
         }
     }    
+    let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+document.addEventListener('touchstart', function(event) {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+}, false);
+
+document.addEventListener('touchend', function(event) {
+    touchEndX = event.changedTouches[0].clientX;
+    touchEndY = event.changedTouches[0].clientY;
+    handleSwipe();
+}, false);
+
+function handleSwipe() {
+    let deltaX = touchEndX - touchStartX;
+    let deltaY = touchEndY - touchStartY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 50) {
+            moveRight();
+        } else if (deltaX < -50) {
+            moveLeft();
+        }
+    } else {
+        if (deltaY > 50) {
+            moveDown();
+        } else if (deltaY < -50) {
+            moveUp();
+        }
+    }
+    updateBoard();
+}
 
     createBoard();
 });
