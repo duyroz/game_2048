@@ -173,14 +173,18 @@ function handleSwipe() {
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
         if (deltaX > 50) {
             moveRight();
+            generateNumber(); 
         } else if (deltaX < -50) {
             moveLeft();
+            generateNumber(); 
         }
     } else {
         if (deltaY > 50) {
             moveDown();
+            generateNumber(); 
         } else if (deltaY < -50) {
             moveUp();
+            generateNumber(); 
         }
     }
     updateBoard();
