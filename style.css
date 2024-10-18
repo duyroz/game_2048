@@ -45,7 +45,6 @@ body {
     user-select: none;
 }
 
-/* Стили для различных значений плиток */
 .square[data-value="2"] {
     background-color: #eee4da;
     color: #776e65;
@@ -91,8 +90,47 @@ body {
     color: #f9f6f2;
 }
 
-/* Стили для пустых плиток */
 .square[data-value="0"] {
     background-color: #cdc1b4;
     color: transparent;
+}
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+    background-color: #bbada0;
+    border-radius: 10px;
+    padding: 10px;
+    width: max-content;
+    margin: 20px auto;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: #cdc1b4;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #776e65;
+    user-select: none;
+}
+
+@media (max-width: 768px) {
+    #grid-container {
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: repeat(4, 70px);
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .square {
+        width: 70px;
+        height: 70px;
+        font-size: 18px;
+    }
 }
